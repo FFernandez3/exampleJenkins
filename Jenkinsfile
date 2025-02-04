@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'maven:3.9.5-eclipse-temurin-17'  // Usa Maven con Java 17 dentro del contenedor
+            image 'maven:3.8.6-openjdk-17'  // Usa Maven con Java 17 dentro del contenedor
         }
     }
 
@@ -18,7 +18,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn clean compile'
+                sh 'mvn clean package'
             }
         }
 
