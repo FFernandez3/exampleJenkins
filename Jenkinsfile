@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = 'example-jenkins'
+        IMAGE_NAME = 'jenkins-springboot'
     }
 
     stages {
