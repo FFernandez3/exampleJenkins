@@ -24,9 +24,10 @@ pipeline {
             steps {
                 script {
                     sh '''
+                        ls -la
                         docker run --rm \
                         -v "${WORKSPACE}:/var/jenkins_home/workspace/spring_pipeline" \
-                        -w /var/jenkins_home/workspace/spring_pipeline \
+                        -w /var/jenkins_home/workspace/spring_pipeline/exampleJenkins \
                         jenkins-springboot mvn test
                     '''
                 }
