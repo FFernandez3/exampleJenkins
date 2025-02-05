@@ -23,12 +23,17 @@ pipeline {
         stage('Run Tests in Container') {
             steps {
                 script {
-                    sh 'docker run --rm $IMAGE_NAME mvn test'
+                    sh '''
+                        docker run --rm \
+                        -v "${WORKSPACE}":/app \
+                        -w /app \
+                        jenkins-springboot mvn test
+                    '''
                 }
             }
             post {
                 always {
-                    junit '**/target/surefire-reports/*.xml'  // Genera reportes de test en Jenkins
+                    junit '**/target/surefire-reports/*.xml'
                 }
                 failure {
                     echo "Los tests han fallado"
